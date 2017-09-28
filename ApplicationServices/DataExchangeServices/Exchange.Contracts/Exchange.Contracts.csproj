@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{76209243-CE9D-4E55-9189-28B173B0A866}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Exchange.Contracts</RootNamespace>
+    <AssemblyName>Exchange.Contracts</AssemblyName>
+    <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>ShowCase.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <OutputPath>bin\QA\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CCISPullServiceContract">
+      <HintPath>..\..\..\PublishedServices\DataExchangeServices\CCIS3\CCISPullServiceContract.dll</HintPath>
+    </Reference>
+    <Reference Include="Oasis.LegalXml.CourtFiling.v40, Version=4.1.0.0, Culture=neutral, PublicKeyToken=85d43299895e833b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PublishedServices\E-Filing\ClientAssemblies\Oasis.LegalXml.CourtFiling.v40.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CasePayment\CasePaymentDetails.cs" />
+    <Compile Include="CasePayment\GetPaymentsResponse.cs" />
+    <Compile Include="CasePayment\EPayPayment.cs" />
+    <Compile Include="CasePayment\SubmitPaymentRequest.cs" />
+    <Compile Include="CasePayment\SubmitPaymentResponse.cs" />
+    <Compile Include="CIPI\CIPExport.cs" />
+    <Compile Include="DocSign\Document.cs" />
+    <Compile Include="DocSign\SignaturePackage.cs" />
+    <Compile Include="DocSign\Signature.cs" />
+    <Compile Include="Exchange\AsyncCommands.cs" />
+    <Compile Include="Exchange\AsyncEvents.cs" />
+    <Compile Include="Exchange\AsyncJobStates.cs" />
+    <Compile Include="Exchange\AsyncJobStatuses.cs" />
+    <Compile Include="Exchange\AsyncOperationState.cs" />
+    <Compile Include="Exchange\CommandMessage.cs" />
+    <Compile Include="Exchange\CommandRequest.cs" />
+    <Compile Include="Exchange\DataExchange.cs" />
+    <Compile Include="Exchange\EventMessage.cs" />
+    <Compile Include="Exchange\ExchangeEventArgs.cs" />
+    <Compile Include="Exchange\ExchangeMessage.cs" />
+    <Compile Include="Exchange\ExchangeRequest.cs" />
+    <Compile Include="Exchange\ExchangeResponse.cs" />
+    <Compile Include="Exchange\Message.cs" />
+    <Compile Include="Exchange\ProcessingMode.cs" />
+    <Compile Include="Exchange\ProcessState.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Exchange\ProcessWorkflow.cs" />
+    <Compile Include="Exchange\StatusMessage.cs" />
+    <Compile Include="Exchange\Subscription.cs" />
+    <Compile Include="Imaging\AutoRedaction\Document.cs" />
+    <Compile Include="Imaging\AutoRedaction\Page.cs" />
+    <Compile Include="Imaging\FileTransferObject.cs" />
+    <Compile Include="Imaging\ImageContainerObject.cs" />
+    <Compile Include="Imaging\ImageEncodingType.cs" />
+    <Compile Include="Imaging\ImageRedactionType.cs" />
+    <Compile Include="Imaging\ImageTransferObject.cs" />
+    <Compile Include="Imaging\OcrRequest.cs" />
+    <Compile Include="Imaging\SerializableDictionary.cs" />
+    <Compile Include="PayLeap\Response.cs" />
+    <Compile Include="PayLeap\Services\ITransactServices.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IAuthenticationService.cs" />
+    <Compile Include="Services\ICacheService.cs" />
+    <Compile Include="Services\ICCISPush.cs" />
+    <Compile Include="Services\IExchangePointService.cs" />
+    <Compile Include="Services\IExchangeWorker.cs" />
+    <Compile Include="Services\IFilingReviewMDE.cs" />
+    <Compile Include="Services\IImageProviderService.cs" />
+    <Compile Include="Services\IPubSubService.cs" />
+    <Compile Include="Services\ISignatureService.cs" />
+    <Compile Include="Services\ServiceHelpers.cs" />
+    <Compile Include="ShowCase.CCIS\CCISData.cs">
+      <DependentUpon>CCISData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ShowCase.CCIS\CCISPushContracts.cs" />
+    <Compile Include="ShowCase.CCIS\ShowcaseCCISInterfaces.cs" />
+    <Compile Include="ShowCase\Agency.cs" />
+    <Compile Include="ShowCase\Attorney.cs" />
+    <Compile Include="ShowCase\Authentication.cs" />
+    <Compile Include="ShowCase\CachedDataTable.cs" />
+    <Compile Include="ShowCase\Case.cs" />
+    <Compile Include="ShowCase\Officer.cs" />
+    <Compile Include="ShowCase\ROA.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ShowCase.CCIS\CCISData.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ShowCase.CCIS\CCISPush.wsdl" />
+    <None Include="ShowCase.pfx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{3D9AD99F-2412-4246-B90B-4EAA41C64699}">
+        <WcfProjectProperties>
+          <AutoStart>True</AutoStart>
+        </WcfProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

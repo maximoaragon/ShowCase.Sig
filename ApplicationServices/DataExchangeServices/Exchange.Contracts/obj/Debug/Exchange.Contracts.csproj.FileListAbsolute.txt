@@ -1,0 +1,11 @@
+C:\Dev\ShowCase\ShowCase\ApplicationServices\DataExchangeServices\Exchange.Contracts\bin\Debug\Exchange.Contracts.dll
+C:\Dev\ShowCase\ShowCase\ApplicationServices\DataExchangeServices\Exchange.Contracts\bin\Debug\Exchange.Contracts.pdb
+C:\Dev\ShowCase\ShowCase\ApplicationServices\DataExchangeServices\Exchange.Contracts\bin\Debug\Oasis.LegalXml.CourtFiling.v40.dll
+C:\Dev\ShowCase\ShowCase\ApplicationServices\DataExchangeServices\Exchange.Contracts\obj\Debug\Exchange.Contracts.csproj.CoreCompileInputs.cache
+C:\Dev\ShowCase\ShowCase\ApplicationServices\DataExchangeServices\Exchange.Contracts\obj\Debug\Exchange.Contracts.dll
+C:\Dev\ShowCase\ShowCase\ApplicationServices\DataExchangeServices\Exchange.Contracts\obj\Debug\Exchange.Contracts.pdb
+C:\dev\repos\ShowCase.Sig\ApplicationServices\DataExchangeServices\Exchange.Contracts\bin\Debug\Exchange.Contracts.dll
+C:\dev\repos\ShowCase.Sig\ApplicationServices\DataExchangeServices\Exchange.Contracts\bin\Debug\Exchange.Contracts.pdb
+C:\dev\repos\ShowCase.Sig\ApplicationServices\DataExchangeServices\Exchange.Contracts\obj\Debug\Exchange.Contracts.csproj.CoreCompileInputs.cache
+C:\dev\repos\ShowCase.Sig\ApplicationServices\DataExchangeServices\Exchange.Contracts\obj\Debug\Exchange.Contracts.dll
+C:\dev\repos\ShowCase.Sig\ApplicationServices\DataExchangeServices\Exchange.Contracts\obj\Debug\Exchange.Contracts.pdb

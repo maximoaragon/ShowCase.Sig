@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="https://push.flccis.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CCISPushService" targetNamespace="https://push.flccis.com">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://push.flccis.com" elementFormDefault="unqualified" targetNamespace="https://push.flccis.com" version="1.0">
+
+  <xs:element name="submitData" type="tns:submitData"/>
+
+  <xs:element name="submitDataResponse" type="tns:submitDataResponse"/>
+
+  <xs:complexType name="submitData">
+    <xs:sequence>
+      <xs:element name="ucn" type="xs:string"/>
+      <xs:element name="ccisFile" type="tns:ccisFile"/>
+      <xs:element name="xml" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="submitDataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="key" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="ccisFile">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ccisparty"/>
+      <xs:enumeration value="cciscase"/>
+      <xs:enumeration value="ccischarge"/>
+      <xs:enumeration value="ccisfiling"/>
+      <xs:enumeration value="ccisattorney"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="submitDataResponse">
+    <wsdl:part element="tns:submitDataResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitData">
+    <wsdl:part element="tns:submitData" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CCISPush">
+    <wsdl:operation name="submitData">
+      <wsdl:input message="tns:submitData" name="submitData">
+    </wsdl:input>
+      <wsdl:output message="tns:submitDataResponse" name="submitDataResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CCISPushServiceSoapBinding" type="tns:CCISPush">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="submitData">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="submitData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="submitDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CCISPushService">
+    <wsdl:port binding="tns:CCISPushServiceSoapBinding" name="CCISPushPort">
+      <soap:address location="https://pushtest.flccis.com/ccisws/CCISPush"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

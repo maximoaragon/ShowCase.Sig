@@ -1,0 +1,2004 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.flccis.com/ccis"
+	xmlns:tns="http://www.flccis.com/ccis" xmlns:e="http://www.flccis.com/ccis/extension" version="3.0">
+  
+	<xsd:element name="CCISPartyElement" type="tns:CCISParty">
+		<xsd:annotation>
+			<xsd:documentation>CCIS Case Party Data 110-01.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="CCISParty">
+		<xsd:sequence>
+			<xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="PersonalIdentificationNumber" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1"></xsd:minLength>
+						<xsd:maxLength value="15"></xsd:maxLength>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="SocialSecurityNumber" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="PartyName" type="tns:PartyName" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="NameType" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="DateOfBirth" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="Gender" type="tns:GenderCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="Race" type="tns:RaceCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="Address" type="tns:PartyAddress" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="PrivacyCode" type="tns:PartyPrivacyCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="DLNumber" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="PlaceOfBirth" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="DateOfDeath" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="OBTSNumber" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="SID" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="DomesticViolenceStalkerIndicator" type="tns:DomesticViolenceStalkerCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="PrimaryPartyPIN" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="JuvenileIndicator" type="xsd:boolean" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="PartyAttorneyList" type="tns:CCISAttorney" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+			<xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+  <xsd:element name="CCISPartyResultElement" type="tns:CCISPartyResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISParty Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISPartyResult">
+    <xsd:sequence>
+      <xsd:element name="CCISPartyList" type="tns:CCISParty" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISCaseElement" type="tns:CCISCase">
+		<xsd:annotation>
+			<xsd:documentation>CCIS Case Data - 110-02</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="CCISCase">
+		<xsd:sequence>
+			<xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="ClerkCaseNumber" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="ClerkFileDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="CaseCourtType" type="tns:CourtTypeCode" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="FileType" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="JudgeName" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="OutstandingWarrantSummonsCapiasIndicator" type="xsd:boolean" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="ReopenDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="ReopenReason" type="tns:ReopenReasonCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="ReopenCloseDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="CaseStatusDescription" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="NoticeOfAppealDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="LastDocketDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="DispositionDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="ContestedIndicator" type="xsd:boolean" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="JurytrialIndicator" type="xsd:boolean" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="JudgeAtDisposition" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="SecurityFlag" type="tns:CasePrivacyCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="CaseClosedIndicator" type="xsd:boolean" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="CaseSystemEntryDate" type="xsd:date" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="SRSCategory" type="tns:SRSCategoryCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="SpecialReportCategory" type="tns:SRSSpecialReportCategoryCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="SRSDispositionType" type="tns:SRSDispositionCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="EstimatedEstateValue" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="ProbateBondAmount" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="EstateTaxIndicator" type="xsd:boolean" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="HeirsIndicator" type="xsd:boolean" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="Division" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="MatrixCaseType" type="tns:CaseMatrixCode" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="CaseStatusCode" type="tns:CaseStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+  <xsd:element name="CCISCaseResultElement" type="tns:CCISCaseResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISCase Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISCaseResult">
+    <xsd:sequence>
+      <xsd:element name="CCISCaseList" type="tns:CCISCase" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISChargeElement" type="tns:CCISCharge">
+		<xsd:annotation>
+			<xsd:documentation>Charges associated with a criminal case - 110-10</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="CCISCharge">
+		<xsd:sequence>
+			<xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="ChargeSequenceNumber" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1"></xsd:minLength>
+						<xsd:maxLength value="15"></xsd:maxLength>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="InitialStatusDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="OffenseDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="InitialStatute" type="tns:StatuteCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="ProsecutorAction" type="tns:ProsecutorActionCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="ProsecutorStatute" type="tns:StatuteCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="ProsecutorDecisionDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="CourtStatute" type="tns:StatuteCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="CourtDecisionDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="CourtAction" type="tns:CourtActionCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="TrafficD6Date" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="TrialType" type="tns:TrialTypeCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="TrafficDispositionCode" type="tns:TrafficDispositionCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="CitationIssuedDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="CitationNumber" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="FinalPlea" type="tns:FinalPleaCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="InitialChargeLevel" type="tns:LevelCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="InitialChargeDegree" type="tns:DegreeCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="ProsecutorChargeLevel" type="tns:LevelCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="ProsecutorChargeDegree" type="tns:DegreeCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="ProsecutorChargeCount" type="xsd:int" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="CourtChargeLevel" type="tns:LevelCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="CourtChargeDegree" type="tns:DegreeCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+  <xsd:element name="CCISChargeResultElement" type="tns:CCISChargeResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISCharge Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISChargeResult">
+    <xsd:sequence>
+      <xsd:element name="CCISChargeList" type="tns:CCISCharge" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISFilingElement" type="tns:CCISFiling">
+		<xsd:annotation>
+			<xsd:documentation>Causes of action on a civil case - 110-17</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="CCISFiling">
+		<xsd:sequence>
+			<xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="FilingID" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1"></xsd:minLength>
+						<xsd:maxLength value="15"></xsd:maxLength>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="FilingDate" type="xsd:date" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="FilingDescription" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="FilingType" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="SRSCategory" type="tns:SRSCategoryCode" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="Active" type="xsd:boolean" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="Contested" type="xsd:boolean" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="JudgmentDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+  <xsd:element name="CCISFilingResultElement" type="tns:CCISFilingResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISFiling Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISFilingResult">
+    <xsd:sequence>
+      <xsd:element name="CCISFilingList" type="tns:CCISFiling" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISAttorneyElement" type="tns:CCISAttorney">
+    <xsd:annotation>
+    <xsd:documentation>Attorney Cross Reference for Party Representation - 110-08</xsd:documentation>
+  </xsd:annotation>
+  </xsd:element> 
+  <xsd:complexType name="CCISAttorney">
+		<xsd:sequence>
+			<xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="ClientPIN" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1"></xsd:minLength>
+						<xsd:maxLength value="15"></xsd:maxLength>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="FloridaBarNumber" type="xsd:int" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="AttorneyType" type="tns:AttorneyTypeCode" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="AppointmentDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="AppointingJudge" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="WithdrawalDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+  <xsd:element name="CCISAttorneyResultElement" type="tns:CCISAttorneyResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISAttorney Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISAttorneyResult">
+    <xsd:sequence>
+      <xsd:element name="CCISAttorneyList" type="tns:CCISAttorney" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISCourtEventElement" type="tns:CCISCourtEvent">
+    <xsd:annotation>
+      <xsd:documentation>CCIS Court Event Data - 110-03</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISCourtEvent">
+    <xsd:sequence>
+      <xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="CourtAppearanceDate" type="xsd:date" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Judge" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="DocketType" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="CourtAppearanceTime" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="CourtLocation" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="CourtRoom" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="Prosecutor" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="DefendantAttorney" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="Division" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISCourtEventResultElement" type="tns:CCISCourtEventResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISCourtEvent Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISCourtEventResult">
+    <xsd:sequence>
+      <xsd:element name="CCISCourtEventList" type="tns:CCISCourtEvent" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISFinancialSummaryElement" type="tns:CCISFinancialSummary">
+    <xsd:annotation>
+      <xsd:documentation>CCIS Financial Summary Data - 110-04</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISFinancialSummary">
+    <xsd:sequence>
+      <xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ChargeSequenceNumber" minOccurs="0" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"></xsd:minLength>
+            <xsd:maxLength value="15"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="TotalAmountDue" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="TotalAmountPaid" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="TotalRestitutionDue" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="TotalRestitutionPaid" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="LastPaymentDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="AttorneyLienAssessmentAmount" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISFinancialSummaryResultElement" type="tns:CCISFinancialSummaryResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISFinancialSummary Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISFinancialSummaryResult">
+    <xsd:sequence>
+      <xsd:element name="CCISFinancialSummaryData" type="tns:CCISFinancialSummary" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISCaseProgressDocketElement" type="tns:CCISCaseProgressDocket">
+    <xsd:annotation>
+      <xsd:documentation>CCIS Progress Docket Data for case - 110-05</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISCaseProgressDocket">
+    <xsd:sequence>
+      <xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="DocketIdentifier" minOccurs="1" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"></xsd:minLength>
+            <xsd:maxLength value="14"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="DocketActionDate" type="xsd:date" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="DocketCode" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="DocketText" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="CountyInfo" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="SystemEntryDate" type="xsd:date" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="NonActivityFlag" type="xsd:boolean" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="DocketSecurity" type="tns:DocketPrivacyCode" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="PageCount" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="LocalDocketSequenceNumber" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISCaseProgressDocketResultElement" type="tns:CCISCaseProgressDocketResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISCaseProgressDocket Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISCaseProgressDocketResult">
+    <xsd:sequence>
+      <xsd:element name="CCISCaseProgressDocketList" type="tns:CCISCaseProgressDocket" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISDocketImageResultElement" type="tns:CCISDocketImageResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISDocketImage Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISDocketImageResult">
+    <xsd:sequence>
+      <xsd:element name="ImageByteArray" type="xsd:base64Binary" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="ImageType" type="tns:ImageTypeCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="FileExtension" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISPartyTypeElement" type="tns:CCISPartyType">
+    <xsd:annotation>
+      <xsd:documentation>CCIS Party Type Data - 110-06</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISPartyType">
+    <xsd:sequence>
+      <xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1" />
+      <xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="PersonalIdentificationNumber" minOccurs="1" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"></xsd:minLength>
+            <xsd:maxLength value="15"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="PartyTypeCode" type="tns:CCISPartyTypeCode"  minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISPartyTypeResultElement" type="tns:CCISPartyTypeResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISPartyType Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISPartyTypeResult">
+    <xsd:sequence>
+      <xsd:element name="CCISPartyTypeList" type="tns:CCISPartyType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISReopenElement" type="tns:CCISReopen">
+    <xsd:annotation>
+      <xsd:documentation>CCIS Reopen Date History File - 110-07</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISReopen">
+    <xsd:sequence>
+      <xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1" />
+      <xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ReopenDate" type="xsd:date" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ReopenReason" type="tns:ReopenReasonCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ReopenCloseDate" type="xsd:date" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISReopenResultElement" type="tns:CCISReopenResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISReopen Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISReopenResult">
+    <xsd:sequence>
+      <xsd:element name="CCISReopenList" type="tns:CCISReopen" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISParcelElement" type="tns:CCISParcel">
+    <xsd:annotation>
+      <xsd:documentation>CCIS Parcel Data - 110-09</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISParcel">
+    <xsd:sequence>
+      <xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1" />
+      <xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ParcelID" maxOccurs="1" minOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"></xsd:minLength>
+            <xsd:maxLength value="20"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ClerkFileDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="DispositionDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="SRSDispositionType" type="tns:SRSDispositionCode" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISParcelResultElement" type="tns:CCISParcelResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISParcel Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISParcelResult">
+    <xsd:sequence>
+      <xsd:element name="CCISParcelList" type="tns:CCISParcel" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISWarrantSummonsCapiasElement" type="tns:CCISWarrantSummonsCapias">
+    <xsd:annotation>
+      <xsd:documentation>CCIS Warrant/Summons/Capias Data - 110-11</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISWarrantSummonsCapias">
+    <xsd:sequence>
+      <xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ChargeSequenceNumber" minOccurs="1" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"></xsd:minLength>
+            <xsd:maxLength value="15"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="WarrantSequenceNumber" minOccurs="1" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"></xsd:minLength>
+            <xsd:maxLength value="15"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ActionOrdered" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="IssuingJudge" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="IssueDate" type="xsd:date" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ExecutionDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="ExecutionStatus" type="tns:ExecutionStatusCode" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISWarrantSummonsCapiasResultElement" type="tns:CCISWarrantSummonsCapiasResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISWarrantSummonsCapias Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISWarrantSummonsCapiasResult">
+    <xsd:sequence>
+      <xsd:element name="CCISWarrantSummonsCapiasList" type="tns:CCISWarrantSummonsCapias" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISSentenceElement" type="tns:CCISSentence">
+    <xsd:annotation>
+      <xsd:documentation>CCIS Sentence Data - 110-12</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISSentence">
+    <xsd:sequence>
+      <xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ChargeSequenceNumber" minOccurs="1" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"></xsd:minLength>
+            <xsd:maxLength value="15"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="SentenceSequenceNumber" minOccurs="1" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"></xsd:minLength>
+            <xsd:maxLength value="15"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="SentenceStatus" type="tns:SentenceStatusCode" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="SentenceImposedDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="SentenceEffectiveDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="Sentence" type="tns:SentenceCode" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="LengthOfSentenceConfinement" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="TypeOfConfinement" type="tns:ConfinementTypeCode" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="JudgeAtSentence" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Division" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISSentenceResultElement" type="tns:CCISSentenceResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISSentence Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISSentenceResult">
+    <xsd:sequence>
+      <xsd:element name="CCISSentenceList" type="tns:CCISSentence" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISOBTSElement" type="tns:CCISOBTS">
+    <xsd:annotation>
+      <xsd:documentation>CCIS OBTS Data - 110-14</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISOBTS">
+    <xsd:sequence>
+      <xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="PIN" minOccurs="1" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"></xsd:minLength>
+            <xsd:maxLength value="15"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ChargeSequenceNumber" minOccurs="1" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"></xsd:minLength>
+            <xsd:maxLength value="15"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="SID" minOccurs="1" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"></xsd:minLength>
+            <xsd:maxLength value="8"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="OBTSNumber" minOccurs="1" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"></xsd:minLength>
+            <xsd:maxLength value="10"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISOBTSResultElement" type="tns:CCISOBTSResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISOBTS Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISOBTSResult">
+    <xsd:sequence>
+      <xsd:element name="CCISOBTSList" type="tns:CCISOBTS" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISJudgeHistoryElement" type="tns:CCISJudgeHistory">
+    <xsd:annotation>
+      <xsd:documentation>CCIS Judge History Data - 110-16</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISJudgeHistory">
+    <xsd:sequence>
+      <xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="PIN" minOccurs="1" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"></xsd:minLength>
+            <xsd:maxLength value="15"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="JudgeName" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="JudgeType" type="tns:JudgeTypeCode" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="AssignDate" type="xsd:date" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="WithdrawDate" type="xsd:date" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="FLBarID" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISJudgeHistoryResultElement" type="tns:CCISJudgeHistoryResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISJudgeHistory Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISJudgeHistoryResult">
+    <xsd:sequence>
+      <xsd:element name="CCISJudgeHistoryList" type="tns:CCISJudgeHistory" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISJudgeMapElement" type="tns:CCISJudgeMap">
+    <xsd:annotation>
+      <xsd:documentation>CCIS Judge Map Data.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISJudgeMap">
+    <xsd:sequence>
+      <xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="JudgeNameIdentifier" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="CCISJudgeNameFormat" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="Division" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+      <xsd:element name="JudgeType" type="tns:JudgeTypeCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISJudgeMapResultElement" type="tns:CCISJudgeMapResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISJudgeMap Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISJudgeMapResult">
+    <xsd:sequence>
+      <xsd:element name="CCISJudgeMapList" type="tns:CCISJudgeMap" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISDocketMapElement" type="tns:CCISDocketMap">
+    <xsd:annotation>
+      <xsd:documentation>CCIS Docket Map Data - 110-21</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISDocketMap">
+    <xsd:sequence>
+      <xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="DocketCodeIdentifier" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="StandardDocketCode" type="tns:CCISStandardDocketCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="StandardDocketDescription" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISDocketMapResultElement" type="tns:CCISDocketMapResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISDocketMap Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISDocketMapResult">
+    <xsd:sequence>
+      <xsd:element name="CCISDocketMapList" type="tns:CCISDocketMap" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISCourtEventMapElement" type="tns:CCISCourtEventMap">
+    <xsd:annotation>
+      <xsd:documentation>CCIS Court Event Map Data - 110-24</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISCourtEventMap">
+    <xsd:sequence>
+      <xsd:element name="CountyCode" type="tns:FLCountyCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="ApplicationSystemID" type="tns:ApplicationCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="UniformCaseNumber" type="tns:UniformCaseNumber" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="CourtEvent" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="StandardCourtEventCode" type="tns:CCISStandardCourtEventCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="StandardCourtEventDescription" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="CCISCourtEventMapResultElement" type="tns:CCISCourtEventMapResult">
+    <xsd:annotation>
+      <xsd:documentation>The Result object to send the CCISCourtEventMap Pull request.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CCISCourtEventMapResult">
+    <xsd:sequence>
+      <xsd:element name="CCISCourtEventMapList" type="tns:CCISCourtEventMap" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="Status" type="tns:ResultStatusCode" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:element name="Message" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.flccis.com/ccis/extension" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="ApplicationCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="OB"></xsd:enumeration>
+      <xsd:enumeration value="CV"></xsd:enumeration>
+      <xsd:enumeration value="TR"></xsd:enumeration>
+      <xsd:enumeration value="PR"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="AttorneyTypeCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="CA"></xsd:enumeration>
+      <xsd:enumeration value="RC"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="CaseMatrixCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1"></xsd:enumeration>
+      <xsd:enumeration value="2"></xsd:enumeration>
+      <xsd:enumeration value="3"></xsd:enumeration>
+      <xsd:enumeration value="4"></xsd:enumeration>
+      <xsd:enumeration value="5"></xsd:enumeration>
+      <xsd:enumeration value="6"></xsd:enumeration>
+      <xsd:enumeration value="7"></xsd:enumeration>
+      <xsd:enumeration value="8"></xsd:enumeration>
+      <xsd:enumeration value="9"></xsd:enumeration>
+      <xsd:enumeration value="10"></xsd:enumeration>
+      <xsd:enumeration value="11"></xsd:enumeration>
+      <xsd:enumeration value="12"></xsd:enumeration>
+      <xsd:enumeration value="13"></xsd:enumeration>
+      <xsd:enumeration value="14"></xsd:enumeration>
+      <xsd:enumeration value="15"></xsd:enumeration>
+      <xsd:enumeration value="16"></xsd:enumeration>
+      <xsd:enumeration value="17"></xsd:enumeration>
+      <xsd:enumeration value="18"></xsd:enumeration>
+      <xsd:enumeration value="19"></xsd:enumeration>
+      <xsd:enumeration value="20"></xsd:enumeration>
+      <xsd:enumeration value="21"></xsd:enumeration>
+      <xsd:enumeration value="22"></xsd:enumeration>
+      <xsd:enumeration value="23"></xsd:enumeration>
+      <xsd:enumeration value="24"></xsd:enumeration>
+      <xsd:enumeration value="25"></xsd:enumeration>
+      <xsd:enumeration value="26"></xsd:enumeration>
+      <xsd:enumeration value="27"></xsd:enumeration>
+      <xsd:enumeration value="28"></xsd:enumeration>
+      <xsd:enumeration value="29"></xsd:enumeration>
+      <xsd:enumeration value="30"></xsd:enumeration>
+      <xsd:enumeration value="31"></xsd:enumeration>
+      <xsd:enumeration value="32"></xsd:enumeration>
+      <xsd:enumeration value="33"></xsd:enumeration>
+      <xsd:enumeration value="34"></xsd:enumeration>
+      <xsd:enumeration value="35"></xsd:enumeration>
+      <xsd:enumeration value="36"></xsd:enumeration>
+      <xsd:enumeration value="37"></xsd:enumeration>
+      <xsd:enumeration value="38"></xsd:enumeration>
+      <xsd:enumeration value="39"></xsd:enumeration>
+      <xsd:enumeration value="40"></xsd:enumeration>
+      <xsd:enumeration value="41"></xsd:enumeration>
+      <xsd:enumeration value="42"></xsd:enumeration>
+      <xsd:enumeration value="43"></xsd:enumeration>
+      <xsd:enumeration value="44"></xsd:enumeration>
+      <xsd:enumeration value="45"></xsd:enumeration>
+      <xsd:enumeration value="46"></xsd:enumeration>
+      <xsd:enumeration value="47"></xsd:enumeration>
+      <xsd:enumeration value="48"></xsd:enumeration>
+      <xsd:enumeration value="49"></xsd:enumeration>
+      <xsd:enumeration value="50"></xsd:enumeration>
+      <xsd:enumeration value="51"></xsd:enumeration>
+      <xsd:enumeration value="52"></xsd:enumeration>
+      <xsd:enumeration value="53"></xsd:enumeration>
+      <xsd:enumeration value="54"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="CasePrivacyCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="C"></xsd:enumeration>
+      <xsd:enumeration value="E"></xsd:enumeration>
+      <xsd:enumeration value="P"></xsd:enumeration>
+      <xsd:enumeration value="S"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="CaseStatusCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1"></xsd:enumeration>
+      <xsd:enumeration value="2"></xsd:enumeration>
+      <xsd:enumeration value="3"></xsd:enumeration>
+      <xsd:enumeration value="4"></xsd:enumeration>
+      <xsd:enumeration value="5"></xsd:enumeration>
+      <xsd:enumeration value="6"></xsd:enumeration>
+      <xsd:enumeration value="7"></xsd:enumeration>
+      <xsd:enumeration value="8"></xsd:enumeration>
+      <xsd:enumeration value="9"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="CourtTypeCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="CJ"/>
+      <xsd:enumeration value="DP"/>
+      <xsd:enumeration value="MH"/>
+      <xsd:enumeration value="AP"/>
+      <xsd:enumeration value="CA"/>
+      <xsd:enumeration value="CC"/>
+      <xsd:enumeration value="CF"/>
+      <xsd:enumeration value="CO"/>
+      <xsd:enumeration value="CP"/>
+      <xsd:enumeration value="CT"/>
+      <xsd:enumeration value="DR"/>
+      <xsd:enumeration value="GA"/>
+      <xsd:enumeration value="IN"/>
+      <xsd:enumeration value="MM"/>
+      <xsd:enumeration value="MO"/>
+      <xsd:enumeration value="SC"/>
+      <xsd:enumeration value="TR"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="CCISStandardDocketCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1"></xsd:enumeration>
+      <xsd:enumeration value="2"></xsd:enumeration>
+      <xsd:enumeration value="3"></xsd:enumeration>
+      <xsd:enumeration value="4"></xsd:enumeration>
+      <xsd:enumeration value="5"></xsd:enumeration>
+      <xsd:enumeration value="6"></xsd:enumeration>
+      <xsd:enumeration value="7"></xsd:enumeration>
+      <xsd:enumeration value="8"></xsd:enumeration>
+      <xsd:enumeration value="9"></xsd:enumeration>
+      <xsd:enumeration value="10"></xsd:enumeration>
+      <xsd:enumeration value="11"></xsd:enumeration>
+      <xsd:enumeration value="12"></xsd:enumeration>
+      <xsd:enumeration value="13"></xsd:enumeration>
+      <xsd:enumeration value="14"></xsd:enumeration>
+      <xsd:enumeration value="15"></xsd:enumeration>
+      <xsd:enumeration value="16"></xsd:enumeration>
+      <xsd:enumeration value="17"></xsd:enumeration>
+      <xsd:enumeration value="18"></xsd:enumeration>
+      <xsd:enumeration value="19"></xsd:enumeration>
+      <xsd:enumeration value="20"></xsd:enumeration>
+      <xsd:enumeration value="21"></xsd:enumeration>
+      <xsd:enumeration value="22"></xsd:enumeration>
+      <xsd:enumeration value="23"></xsd:enumeration>
+      <xsd:enumeration value="24"></xsd:enumeration>
+      <xsd:enumeration value="25"></xsd:enumeration>
+      <xsd:enumeration value="26"></xsd:enumeration>
+      <xsd:enumeration value="27"></xsd:enumeration>
+      <xsd:enumeration value="28"></xsd:enumeration>
+      <xsd:enumeration value="29"></xsd:enumeration>
+      <xsd:enumeration value="30"></xsd:enumeration>
+      <xsd:enumeration value="31"></xsd:enumeration>
+      <xsd:enumeration value="32"></xsd:enumeration>
+      <xsd:enumeration value="33"></xsd:enumeration>
+      <xsd:enumeration value="34"></xsd:enumeration>
+      <xsd:enumeration value="35"></xsd:enumeration>
+      <xsd:enumeration value="36"></xsd:enumeration>
+      <xsd:enumeration value="37"></xsd:enumeration>
+      <xsd:enumeration value="38"></xsd:enumeration>
+      <xsd:enumeration value="39"></xsd:enumeration>
+      <xsd:enumeration value="40"></xsd:enumeration>
+      <xsd:enumeration value="41"></xsd:enumeration>
+      <xsd:enumeration value="42"></xsd:enumeration>
+      <xsd:enumeration value="43"></xsd:enumeration>
+      <xsd:enumeration value="44"></xsd:enumeration>
+      <xsd:enumeration value="45"></xsd:enumeration>
+      <xsd:enumeration value="46"></xsd:enumeration>
+      <xsd:enumeration value="47"></xsd:enumeration>
+      <xsd:enumeration value="48"></xsd:enumeration>
+      <xsd:enumeration value="49"></xsd:enumeration>
+      <xsd:enumeration value="50"></xsd:enumeration>
+      <xsd:enumeration value="51"></xsd:enumeration>
+      <xsd:enumeration value="52"></xsd:enumeration>
+      <xsd:enumeration value="53"></xsd:enumeration>
+      <xsd:enumeration value="54"></xsd:enumeration>
+      <xsd:enumeration value="55"></xsd:enumeration>
+      <xsd:enumeration value="56"></xsd:enumeration>
+      <xsd:enumeration value="57"></xsd:enumeration>
+      <xsd:enumeration value="58"></xsd:enumeration>
+      <xsd:enumeration value="59"></xsd:enumeration>
+      <xsd:enumeration value="60"></xsd:enumeration>
+      <xsd:enumeration value="61"></xsd:enumeration>
+      <xsd:enumeration value="62"></xsd:enumeration>
+      <xsd:enumeration value="63"></xsd:enumeration>
+      <xsd:enumeration value="64"></xsd:enumeration>
+      <xsd:enumeration value="65"></xsd:enumeration>
+      <xsd:enumeration value="66"></xsd:enumeration>
+      <xsd:enumeration value="67"></xsd:enumeration>
+      <xsd:enumeration value="68"></xsd:enumeration>
+      <xsd:enumeration value="69"></xsd:enumeration>
+      <xsd:enumeration value="70"></xsd:enumeration>
+      <xsd:enumeration value="71"></xsd:enumeration>
+      <xsd:enumeration value="72"></xsd:enumeration>
+      <xsd:enumeration value="73"></xsd:enumeration>
+      <xsd:enumeration value="74"></xsd:enumeration>
+      <xsd:enumeration value="75"></xsd:enumeration>
+      <xsd:enumeration value="76"></xsd:enumeration>
+      <xsd:enumeration value="77"></xsd:enumeration>
+      <xsd:enumeration value="78"></xsd:enumeration>
+      <xsd:enumeration value="79"></xsd:enumeration>
+      <xsd:enumeration value="80"></xsd:enumeration>
+      <xsd:enumeration value="81"></xsd:enumeration>
+      <xsd:enumeration value="82"></xsd:enumeration>
+      <xsd:enumeration value="83"></xsd:enumeration>
+      <xsd:enumeration value="84"></xsd:enumeration>
+      <xsd:enumeration value="85"></xsd:enumeration>
+      <xsd:enumeration value="86"></xsd:enumeration>
+      <xsd:enumeration value="87"></xsd:enumeration>
+      <xsd:enumeration value="88"></xsd:enumeration>
+      <xsd:enumeration value="89"></xsd:enumeration>
+      <xsd:enumeration value="90"></xsd:enumeration>
+      <xsd:enumeration value="91"></xsd:enumeration>
+      <xsd:enumeration value="92"></xsd:enumeration>
+      <xsd:enumeration value="93"></xsd:enumeration>
+      <xsd:enumeration value="94"></xsd:enumeration>
+      <xsd:enumeration value="95"></xsd:enumeration>
+      <xsd:enumeration value="96"></xsd:enumeration>
+      <xsd:enumeration value="97"></xsd:enumeration>
+      <xsd:enumeration value="98"></xsd:enumeration>
+      <xsd:enumeration value="99"></xsd:enumeration>
+      <xsd:enumeration value="100"></xsd:enumeration>
+      <xsd:enumeration value="101"></xsd:enumeration>
+      <xsd:enumeration value="102"></xsd:enumeration>
+      <xsd:enumeration value="103"></xsd:enumeration>
+      <xsd:enumeration value="104"></xsd:enumeration>
+      <xsd:enumeration value="105"></xsd:enumeration>
+      <xsd:enumeration value="106"></xsd:enumeration>
+      <xsd:enumeration value="107"></xsd:enumeration>
+      <xsd:enumeration value="108"></xsd:enumeration>
+      <xsd:enumeration value="109"></xsd:enumeration>
+      <xsd:enumeration value="110"></xsd:enumeration>
+      <xsd:enumeration value="111"></xsd:enumeration>
+      <xsd:enumeration value="112"></xsd:enumeration>
+      <xsd:enumeration value="113"></xsd:enumeration>
+      <xsd:enumeration value="114"></xsd:enumeration>
+      <xsd:enumeration value="115"></xsd:enumeration>
+      <xsd:enumeration value="116"></xsd:enumeration>
+      <xsd:enumeration value="117"></xsd:enumeration>
+      <xsd:enumeration value="118"></xsd:enumeration>
+      <xsd:enumeration value="119"></xsd:enumeration>
+      <xsd:enumeration value="120"></xsd:enumeration>
+      <xsd:enumeration value="121"></xsd:enumeration>
+      <xsd:enumeration value="122"></xsd:enumeration>
+      <xsd:enumeration value="123"></xsd:enumeration>
+      <xsd:enumeration value="124"></xsd:enumeration>
+      <xsd:enumeration value="125"></xsd:enumeration>
+      <xsd:enumeration value="126"></xsd:enumeration>
+      <xsd:enumeration value="127"></xsd:enumeration>
+      <xsd:enumeration value="128"></xsd:enumeration>
+      <xsd:enumeration value="129"></xsd:enumeration>
+      <xsd:enumeration value="130"></xsd:enumeration>
+      <xsd:enumeration value="131"></xsd:enumeration>
+      <xsd:enumeration value="132"></xsd:enumeration>
+      <xsd:enumeration value="133"></xsd:enumeration>
+      <xsd:enumeration value="134"></xsd:enumeration>
+      <xsd:enumeration value="135"></xsd:enumeration>
+      <xsd:enumeration value="136"></xsd:enumeration>
+      <xsd:enumeration value="137"></xsd:enumeration>
+      <xsd:enumeration value="138"></xsd:enumeration>
+      <xsd:enumeration value="139"></xsd:enumeration>
+      <xsd:enumeration value="140"></xsd:enumeration>
+      <xsd:enumeration value="141"></xsd:enumeration>
+      <xsd:enumeration value="142"></xsd:enumeration>
+      <xsd:enumeration value="143"></xsd:enumeration>
+      <xsd:enumeration value="144"></xsd:enumeration>
+      <xsd:enumeration value="145"></xsd:enumeration>
+      <xsd:enumeration value="146"></xsd:enumeration>
+      <xsd:enumeration value="147"></xsd:enumeration>
+      <xsd:enumeration value="148"></xsd:enumeration>
+      <xsd:enumeration value="149"></xsd:enumeration>
+      <xsd:enumeration value="150"></xsd:enumeration>
+      <xsd:enumeration value="151"></xsd:enumeration>
+      <xsd:enumeration value="152"></xsd:enumeration>
+      <xsd:enumeration value="153"></xsd:enumeration>
+      <xsd:enumeration value="154"></xsd:enumeration>
+      <xsd:enumeration value="155"></xsd:enumeration>
+      <xsd:enumeration value="156"></xsd:enumeration>
+      <xsd:enumeration value="157"></xsd:enumeration>
+      <xsd:enumeration value="158"></xsd:enumeration>
+      <xsd:enumeration value="159"></xsd:enumeration>
+      <xsd:enumeration value="160"></xsd:enumeration>
+      <xsd:enumeration value="161"></xsd:enumeration>
+      <xsd:enumeration value="162"></xsd:enumeration>
+      <xsd:enumeration value="163"></xsd:enumeration>
+      <xsd:enumeration value="164"></xsd:enumeration>
+      <xsd:enumeration value="165"></xsd:enumeration>
+      <xsd:enumeration value="166"></xsd:enumeration>
+      <xsd:enumeration value="167"></xsd:enumeration>
+      <xsd:enumeration value="168"></xsd:enumeration>
+      <xsd:enumeration value="169"></xsd:enumeration>
+      <xsd:enumeration value="170"></xsd:enumeration>
+      <xsd:enumeration value="171"></xsd:enumeration>
+      <xsd:enumeration value="172"></xsd:enumeration>
+      <xsd:enumeration value="173"></xsd:enumeration>
+      <xsd:enumeration value="174"></xsd:enumeration>
+      <xsd:enumeration value="175"></xsd:enumeration>
+      <xsd:enumeration value="176"></xsd:enumeration>
+      <xsd:enumeration value="177"></xsd:enumeration>
+      <xsd:enumeration value="178"></xsd:enumeration>
+      <xsd:enumeration value="179"></xsd:enumeration>
+      <xsd:enumeration value="180"></xsd:enumeration>
+      <xsd:enumeration value="181"></xsd:enumeration>
+      <xsd:enumeration value="182"></xsd:enumeration>
+      <xsd:enumeration value="183"></xsd:enumeration>
+      <xsd:enumeration value="184"></xsd:enumeration>
+      <xsd:enumeration value="185"></xsd:enumeration>
+      <xsd:enumeration value="186"></xsd:enumeration>
+      <xsd:enumeration value="187"></xsd:enumeration>
+      <xsd:enumeration value="188"></xsd:enumeration>
+      <xsd:enumeration value="189"></xsd:enumeration>
+      <xsd:enumeration value="190"></xsd:enumeration>
+      <xsd:enumeration value="191"></xsd:enumeration>
+      <xsd:enumeration value="192"></xsd:enumeration>
+      <xsd:enumeration value="193"></xsd:enumeration>
+      <xsd:enumeration value="194"></xsd:enumeration>
+      <xsd:enumeration value="195"></xsd:enumeration>
+      <xsd:enumeration value="196"></xsd:enumeration>
+      <xsd:enumeration value="197"></xsd:enumeration>
+      <xsd:enumeration value="198"></xsd:enumeration>
+      <xsd:enumeration value="199"></xsd:enumeration>
+      <xsd:enumeration value="200"></xsd:enumeration>
+      <xsd:enumeration value="201"></xsd:enumeration>
+      <xsd:enumeration value="202"></xsd:enumeration>
+      <xsd:enumeration value="203"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="CCISStandardCourtEventCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1"></xsd:enumeration>
+      <xsd:enumeration value="2"></xsd:enumeration>
+      <xsd:enumeration value="3"></xsd:enumeration>
+      <xsd:enumeration value="4"></xsd:enumeration>
+      <xsd:enumeration value="5"></xsd:enumeration>
+      <xsd:enumeration value="6"></xsd:enumeration>
+      <xsd:enumeration value="7"></xsd:enumeration>
+      <xsd:enumeration value="8"></xsd:enumeration>
+      <xsd:enumeration value="9"></xsd:enumeration>
+      <xsd:enumeration value="10"></xsd:enumeration>
+      <xsd:enumeration value="11"></xsd:enumeration>
+      <xsd:enumeration value="12"></xsd:enumeration>
+      <xsd:enumeration value="13"></xsd:enumeration>
+      <xsd:enumeration value="14"></xsd:enumeration>
+      <xsd:enumeration value="15"></xsd:enumeration>
+      <xsd:enumeration value="16"></xsd:enumeration>
+      <xsd:enumeration value="17"></xsd:enumeration>
+      <xsd:enumeration value="18"></xsd:enumeration>
+      <xsd:enumeration value="19"></xsd:enumeration>
+      <xsd:enumeration value="20"></xsd:enumeration>
+      <xsd:enumeration value="21"></xsd:enumeration>
+      <xsd:enumeration value="22"></xsd:enumeration>
+      <xsd:enumeration value="23"></xsd:enumeration>
+      <xsd:enumeration value="24"></xsd:enumeration>
+      <xsd:enumeration value="25"></xsd:enumeration>
+      <xsd:enumeration value="26"></xsd:enumeration>
+      <xsd:enumeration value="27"></xsd:enumeration>
+      <xsd:enumeration value="28"></xsd:enumeration>
+      <xsd:enumeration value="29"></xsd:enumeration>
+      <xsd:enumeration value="30"></xsd:enumeration>
+      <xsd:enumeration value="31"></xsd:enumeration>
+      <xsd:enumeration value="32"></xsd:enumeration>
+      <xsd:enumeration value="33"></xsd:enumeration>
+      <xsd:enumeration value="34"></xsd:enumeration>
+      <xsd:enumeration value="35"></xsd:enumeration>
+      <xsd:enumeration value="36"></xsd:enumeration>
+      <xsd:enumeration value="37"></xsd:enumeration>
+      <xsd:enumeration value="38"></xsd:enumeration>
+      <xsd:enumeration value="39"></xsd:enumeration>
+      <xsd:enumeration value="40"></xsd:enumeration>
+      <xsd:enumeration value="41"></xsd:enumeration>
+      <xsd:enumeration value="42"></xsd:enumeration>
+      <xsd:enumeration value="43"></xsd:enumeration>
+      <xsd:enumeration value="44"></xsd:enumeration>
+      <xsd:enumeration value="45"></xsd:enumeration>
+      <xsd:enumeration value="46"></xsd:enumeration>
+      <xsd:enumeration value="47"></xsd:enumeration>
+      <xsd:enumeration value="48"></xsd:enumeration>
+      <xsd:enumeration value="49"></xsd:enumeration>
+      <xsd:enumeration value="50"></xsd:enumeration>
+      <xsd:enumeration value="51"></xsd:enumeration>
+      <xsd:enumeration value="52"></xsd:enumeration>
+      <xsd:enumeration value="53"></xsd:enumeration>
+      <xsd:enumeration value="54"></xsd:enumeration>
+      <xsd:enumeration value="55"></xsd:enumeration>
+      <xsd:enumeration value="56"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="CCISPartyTypeCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="A"></xsd:enumeration>
+      <xsd:enumeration value="AA"></xsd:enumeration>
+      <xsd:enumeration value="AAL"></xsd:enumeration>
+      <xsd:enumeration value="AALT"></xsd:enumeration>
+      <xsd:enumeration value="AD"></xsd:enumeration>
+      <xsd:enumeration value="ADPT"></xsd:enumeration>
+      <xsd:enumeration value="AF"></xsd:enumeration>
+      <xsd:enumeration value="AG"></xsd:enumeration>
+      <xsd:enumeration value="AGCA"></xsd:enumeration>
+      <xsd:enumeration value="AM"></xsd:enumeration>
+      <xsd:enumeration value="AO"></xsd:enumeration>
+      <xsd:enumeration value="APP"></xsd:enumeration>
+      <xsd:enumeration value="APPE"></xsd:enumeration>
+      <xsd:enumeration value="APPT"></xsd:enumeration>
+      <xsd:enumeration value="AROF"></xsd:enumeration>
+      <xsd:enumeration value="AS"></xsd:enumeration>
+      <xsd:enumeration value="ATTY"></xsd:enumeration>
+      <xsd:enumeration value="BAIL"></xsd:enumeration>
+      <xsd:enumeration value="BD"></xsd:enumeration>
+      <xsd:enumeration value="BEN"></xsd:enumeration>
+      <xsd:enumeration value="BON"></xsd:enumeration>
+      <xsd:enumeration value="B"></xsd:enumeration>
+      <xsd:enumeration value="BUY"></xsd:enumeration>
+      <xsd:enumeration value="CARE"></xsd:enumeration>
+      <xsd:enumeration value="CAV"></xsd:enumeration>
+      <xsd:enumeration value="CER"></xsd:enumeration>
+      <xsd:enumeration value="CGR"></xsd:enumeration>
+      <xsd:enumeration value="CH"></xsd:enumeration>
+      <xsd:enumeration value="CHDI"></xsd:enumeration>
+      <xsd:enumeration value="CHDP"></xsd:enumeration>
+      <xsd:enumeration value="CLAT"></xsd:enumeration>
+      <xsd:enumeration value="CLI"></xsd:enumeration>
+      <xsd:enumeration value="CN"></xsd:enumeration>
+      <xsd:enumeration value="CO"></xsd:enumeration>
+      <xsd:enumeration value="COFC"></xsd:enumeration>
+      <xsd:enumeration value="COMP"></xsd:enumeration>
+      <xsd:enumeration value="CON"></xsd:enumeration>
+      <xsd:enumeration value="COUN"></xsd:enumeration>
+      <xsd:enumeration value="CPR"></xsd:enumeration>
+      <xsd:enumeration value="CRED"></xsd:enumeration>
+      <xsd:enumeration value="CTR"></xsd:enumeration>
+      <xsd:enumeration value="CUR"></xsd:enumeration>
+      <xsd:enumeration value="CUS"></xsd:enumeration>
+      <xsd:enumeration value="D"></xsd:enumeration>
+      <xsd:enumeration value="DB"></xsd:enumeration>
+      <xsd:enumeration value="DCDT"></xsd:enumeration>
+      <xsd:enumeration value="DCF"></xsd:enumeration>
+      <xsd:enumeration value="DCW"></xsd:enumeration>
+      <xsd:enumeration value="DEP"></xsd:enumeration>
+      <xsd:enumeration value="DF"></xsd:enumeration>
+      <xsd:enumeration value="DIR"></xsd:enumeration>
+      <xsd:enumeration value="DOC"></xsd:enumeration>
+      <xsd:enumeration value="DOCT"></xsd:enumeration>
+      <xsd:enumeration value="DP"></xsd:enumeration>
+      <xsd:enumeration value="ESTA"></xsd:enumeration>
+      <xsd:enumeration value="EX"></xsd:enumeration>
+      <xsd:enumeration value="EXC"></xsd:enumeration>
+      <xsd:enumeration value="F"></xsd:enumeration>
+      <xsd:enumeration value="FD"></xsd:enumeration>
+      <xsd:enumeration value="FH"></xsd:enumeration>
+      <xsd:enumeration value="FHU"></xsd:enumeration>
+      <xsd:enumeration value="FILE"></xsd:enumeration>
+      <xsd:enumeration value="FK"></xsd:enumeration>
+      <xsd:enumeration value="FM"></xsd:enumeration>
+      <xsd:enumeration value="FMD"></xsd:enumeration>
+      <xsd:enumeration value="FMR"></xsd:enumeration>
+      <xsd:enumeration value="FP"></xsd:enumeration>
+      <xsd:enumeration value="FU"></xsd:enumeration>
+      <xsd:enumeration value="FV"></xsd:enumeration>
+      <xsd:enumeration value="FW"></xsd:enumeration>
+      <xsd:enumeration value="GAL"></xsd:enumeration>
+      <xsd:enumeration value="GANG"></xsd:enumeration>
+      <xsd:enumeration value="GE"></xsd:enumeration>
+      <xsd:enumeration value="GF"></xsd:enumeration>
+      <xsd:enumeration value="GH"></xsd:enumeration>
+      <xsd:enumeration value="GM"></xsd:enumeration>
+      <xsd:enumeration value="GMST"></xsd:enumeration>
+      <xsd:enumeration value="GP"></xsd:enumeration>
+      <xsd:enumeration value="GRD"></xsd:enumeration>
+      <xsd:enumeration value="H"></xsd:enumeration>
+      <xsd:enumeration value="HEIR"></xsd:enumeration>
+      <xsd:enumeration value="HO"></xsd:enumeration>
+      <xsd:enumeration value="ID"></xsd:enumeration>
+      <xsd:enumeration value="INCA"></xsd:enumeration>
+      <xsd:enumeration value="INP"></xsd:enumeration>
+      <xsd:enumeration value="INRE"></xsd:enumeration>
+      <xsd:enumeration value="INST"></xsd:enumeration>
+      <xsd:enumeration value="INTE"></xsd:enumeration>
+      <xsd:enumeration value="INV"></xsd:enumeration>
+      <xsd:enumeration value="IV"></xsd:enumeration>
+      <xsd:enumeration value="J"></xsd:enumeration>
+      <xsd:enumeration value="JPO"></xsd:enumeration>
+      <xsd:enumeration value="LE"></xsd:enumeration>
+      <xsd:enumeration value="LF"></xsd:enumeration>
+      <xsd:enumeration value="LM"></xsd:enumeration>
+      <xsd:enumeration value="LNEE"></xsd:enumeration>
+      <xsd:enumeration value="LNOR"></xsd:enumeration>
+      <xsd:enumeration value="M"></xsd:enumeration>
+      <xsd:enumeration value="MAN"></xsd:enumeration>
+      <xsd:enumeration value="MB"></xsd:enumeration>
+      <xsd:enumeration value="MG"></xsd:enumeration>
+      <xsd:enumeration value="MGST"></xsd:enumeration>
+      <xsd:enumeration value="MHF"></xsd:enumeration>
+      <xsd:enumeration value="MM"></xsd:enumeration>
+      <xsd:enumeration value="MN"></xsd:enumeration>
+      <xsd:enumeration value="MNGR"></xsd:enumeration>
+      <xsd:enumeration value="NF"></xsd:enumeration>
+      <xsd:enumeration value="NICK"></xsd:enumeration>
+      <xsd:enumeration value="NK"></xsd:enumeration>
+      <xsd:enumeration value="NM"></xsd:enumeration>
+      <xsd:enumeration value="NO"></xsd:enumeration>
+      <xsd:enumeration value="NOM"></xsd:enumeration>
+      <xsd:enumeration value="O"></xsd:enumeration>
+      <xsd:enumeration value="OBO"></xsd:enumeration>
+      <xsd:enumeration value="OWN"></xsd:enumeration>
+      <xsd:enumeration value="P"></xsd:enumeration>
+      <xsd:enumeration value="PA"></xsd:enumeration>
+      <xsd:enumeration value="PAC"></xsd:enumeration>
+      <xsd:enumeration value="PAR"></xsd:enumeration>
+      <xsd:enumeration value="PARA"></xsd:enumeration>
+      <xsd:enumeration value="PART"></xsd:enumeration>
+      <xsd:enumeration value="PAY"></xsd:enumeration>
+      <xsd:enumeration value="PER"></xsd:enumeration>
+      <xsd:enumeration value="PET"></xsd:enumeration>
+      <xsd:enumeration value="PF"></xsd:enumeration>
+      <xsd:enumeration value="PI"></xsd:enumeration>
+      <xsd:enumeration value="PLC"></xsd:enumeration>
+      <xsd:enumeration value="PNT"></xsd:enumeration>
+      <xsd:enumeration value="POA"></xsd:enumeration>
+      <xsd:enumeration value="PP"></xsd:enumeration>
+      <xsd:enumeration value="PR"></xsd:enumeration>
+      <xsd:enumeration value="PRI"></xsd:enumeration>
+      <xsd:enumeration value="PRO"></xsd:enumeration>
+      <xsd:enumeration value="PROB"></xsd:enumeration>
+      <xsd:enumeration value="PRPT"></xsd:enumeration>
+      <xsd:enumeration value="PRSU"></xsd:enumeration>
+      <xsd:enumeration value="PSD"></xsd:enumeration>
+      <xsd:enumeration value="PT"></xsd:enumeration>
+      <xsd:enumeration value="PURC"></xsd:enumeration>
+      <xsd:enumeration value="PWF"></xsd:enumeration>
+      <xsd:enumeration value="R"></xsd:enumeration>
+      <xsd:enumeration value="RAGT"></xsd:enumeration>
+      <xsd:enumeration value="REP"></xsd:enumeration>
+      <xsd:enumeration value="RESP"></xsd:enumeration>
+      <xsd:enumeration value="SALV"></xsd:enumeration>
+      <xsd:enumeration value="SF"></xsd:enumeration>
+      <xsd:enumeration value="SGAL"></xsd:enumeration>
+      <xsd:enumeration value="SM"></xsd:enumeration>
+      <xsd:enumeration value="SMST"></xsd:enumeration>
+      <xsd:enumeration value="SOCL"></xsd:enumeration>
+      <xsd:enumeration value="SOFC"></xsd:enumeration>
+      <xsd:enumeration value="SP"></xsd:enumeration>
+      <xsd:enumeration value="SPVR"></xsd:enumeration>
+      <xsd:enumeration value="SRTY"></xsd:enumeration>
+      <xsd:enumeration value="STAF"></xsd:enumeration>
+      <xsd:enumeration value="SU"></xsd:enumeration>
+      <xsd:enumeration value="SUBJ"></xsd:enumeration>
+      <xsd:enumeration value="SUC"></xsd:enumeration>
+      <xsd:enumeration value="SUPV"></xsd:enumeration>
+      <xsd:enumeration value="SURD"></xsd:enumeration>
+      <xsd:enumeration value="TA"></xsd:enumeration>
+      <xsd:enumeration value="TP"></xsd:enumeration>
+      <xsd:enumeration value="TRST"></xsd:enumeration>
+      <xsd:enumeration value="TRUS"></xsd:enumeration>
+      <xsd:enumeration value="U"></xsd:enumeration>
+      <xsd:enumeration value="UN"></xsd:enumeration>
+      <xsd:enumeration value="VI"></xsd:enumeration>
+      <xsd:enumeration value="W"></xsd:enumeration>
+      <xsd:enumeration value="WA"></xsd:enumeration>
+      <xsd:enumeration value="WI"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="CourtActionCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="A"></xsd:enumeration>
+      <xsd:enumeration value="B"></xsd:enumeration>
+      <xsd:enumeration value="D"></xsd:enumeration>
+      <xsd:enumeration value="E"></xsd:enumeration>
+      <xsd:enumeration value="G"></xsd:enumeration>
+      <xsd:enumeration value="H"></xsd:enumeration>
+      <xsd:enumeration value="I"></xsd:enumeration>
+      <xsd:enumeration value="K"></xsd:enumeration>
+      <xsd:enumeration value="M"></xsd:enumeration>
+      <xsd:enumeration value="Q"></xsd:enumeration>
+      <xsd:enumeration value="T"></xsd:enumeration>
+      <xsd:enumeration value="V"></xsd:enumeration>
+      <xsd:enumeration value="W"></xsd:enumeration>
+      <xsd:enumeration value="X"></xsd:enumeration>
+      <xsd:enumeration value="Y"></xsd:enumeration>
+      <xsd:enumeration value="Z"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="ConfinementTypeCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="C"></xsd:enumeration>
+      <xsd:enumeration value="P"></xsd:enumeration>
+      <xsd:enumeration value="H"></xsd:enumeration>
+      <xsd:enumeration value="I"></xsd:enumeration>
+      <xsd:enumeration value="J"></xsd:enumeration>
+      <xsd:enumeration value="O"></xsd:enumeration>
+      <xsd:enumeration value="R"></xsd:enumeration>
+      <xsd:enumeration value="N"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="DegreeCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="C"></xsd:enumeration>
+      <xsd:enumeration value="L"></xsd:enumeration>
+      <xsd:enumeration value="P"></xsd:enumeration>
+      <xsd:enumeration value="F"></xsd:enumeration>
+      <xsd:enumeration value="S"></xsd:enumeration>
+      <xsd:enumeration value="T"></xsd:enumeration>
+      <xsd:enumeration value="N"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="DocketPrivacyCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="P"></xsd:enumeration>
+      <xsd:enumeration value="C"></xsd:enumeration>
+      <xsd:enumeration value="S"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="ExecutionStatusCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="E"></xsd:enumeration>
+      <xsd:enumeration value="Q"></xsd:enumeration>
+      <xsd:enumeration value="R"></xsd:enumeration>
+      <xsd:enumeration value="W"></xsd:enumeration>
+      <xsd:enumeration value="S"></xsd:enumeration>
+      <xsd:enumeration value="O"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="DomesticViolenceStalkerCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="D"></xsd:enumeration>
+      <xsd:enumeration value="S"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="FinalPleaCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1"></xsd:enumeration>
+      <xsd:enumeration value="2"></xsd:enumeration>
+      <xsd:enumeration value="3"></xsd:enumeration>
+      <xsd:enumeration value="4"></xsd:enumeration>
+      <xsd:enumeration value="5"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="FLCountyCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="01"></xsd:enumeration>
+      <xsd:enumeration value="02"></xsd:enumeration>
+      <xsd:enumeration value="03"></xsd:enumeration>
+      <xsd:enumeration value="04"></xsd:enumeration>
+      <xsd:enumeration value="05"></xsd:enumeration>
+      <xsd:enumeration value="06"></xsd:enumeration>
+      <xsd:enumeration value="07"></xsd:enumeration>
+      <xsd:enumeration value="08"></xsd:enumeration>
+      <xsd:enumeration value="09"></xsd:enumeration>
+      <xsd:enumeration value="10"></xsd:enumeration>
+      <xsd:enumeration value="11"></xsd:enumeration>
+      <xsd:enumeration value="12"></xsd:enumeration>
+      <xsd:enumeration value="13"></xsd:enumeration>
+      <xsd:enumeration value="14"></xsd:enumeration>
+      <xsd:enumeration value="15"></xsd:enumeration>
+      <xsd:enumeration value="16"></xsd:enumeration>
+      <xsd:enumeration value="17"></xsd:enumeration>
+      <xsd:enumeration value="18"></xsd:enumeration>
+      <xsd:enumeration value="19"></xsd:enumeration>
+      <xsd:enumeration value="20"></xsd:enumeration>
+      <xsd:enumeration value="21"></xsd:enumeration>
+      <xsd:enumeration value="22"></xsd:enumeration>
+      <xsd:enumeration value="23"></xsd:enumeration>
+      <xsd:enumeration value="24"></xsd:enumeration>
+      <xsd:enumeration value="25"></xsd:enumeration>
+      <xsd:enumeration value="26"></xsd:enumeration>
+      <xsd:enumeration value="27"></xsd:enumeration>
+      <xsd:enumeration value="28"></xsd:enumeration>
+      <xsd:enumeration value="29"></xsd:enumeration>
+      <xsd:enumeration value="30"></xsd:enumeration>
+      <xsd:enumeration value="31"></xsd:enumeration>
+      <xsd:enumeration value="32"></xsd:enumeration>
+      <xsd:enumeration value="33"></xsd:enumeration>
+      <xsd:enumeration value="34"></xsd:enumeration>
+      <xsd:enumeration value="35"></xsd:enumeration>
+      <xsd:enumeration value="36"></xsd:enumeration>
+      <xsd:enumeration value="37"></xsd:enumeration>
+      <xsd:enumeration value="38"></xsd:enumeration>
+      <xsd:enumeration value="39"></xsd:enumeration>
+      <xsd:enumeration value="40"></xsd:enumeration>
+      <xsd:enumeration value="41"></xsd:enumeration>
+      <xsd:enumeration value="42"></xsd:enumeration>
+      <xsd:enumeration value="43"></xsd:enumeration>
+      <xsd:enumeration value="44"></xsd:enumeration>
+      <xsd:enumeration value="45"></xsd:enumeration>
+      <xsd:enumeration value="46"></xsd:enumeration>
+      <xsd:enumeration value="47"></xsd:enumeration>
+      <xsd:enumeration value="48"></xsd:enumeration>
+      <xsd:enumeration value="49"></xsd:enumeration>
+      <xsd:enumeration value="50"></xsd:enumeration>
+      <xsd:enumeration value="51"></xsd:enumeration>
+      <xsd:enumeration value="52"></xsd:enumeration>
+      <xsd:enumeration value="53"></xsd:enumeration>
+      <xsd:enumeration value="54"></xsd:enumeration>
+      <xsd:enumeration value="55"></xsd:enumeration>
+      <xsd:enumeration value="56"></xsd:enumeration>
+      <xsd:enumeration value="57"></xsd:enumeration>
+      <xsd:enumeration value="58"></xsd:enumeration>
+      <xsd:enumeration value="59"></xsd:enumeration>
+      <xsd:enumeration value="60"></xsd:enumeration>
+      <xsd:enumeration value="61"></xsd:enumeration>
+      <xsd:enumeration value="62"></xsd:enumeration>
+      <xsd:enumeration value="63"></xsd:enumeration>
+      <xsd:enumeration value="64"></xsd:enumeration>
+      <xsd:enumeration value="65"></xsd:enumeration>
+      <xsd:enumeration value="66"></xsd:enumeration>
+      <xsd:enumeration value="67"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="GenderCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="M"></xsd:enumeration>
+      <xsd:enumeration value="F"></xsd:enumeration>
+      <xsd:enumeration value="N"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="ImageTypeCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="USE_NATIVE"></xsd:enumeration>
+      <xsd:enumeration value="TIFF"></xsd:enumeration>
+      <xsd:enumeration value="PDF"></xsd:enumeration>
+      <xsd:enumeration value="JPEG"></xsd:enumeration>
+      <xsd:enumeration value="RTF"></xsd:enumeration>
+      <xsd:enumeration value="UNKNOWN"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="JudgeTypeCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="JU"></xsd:enumeration>
+      <xsd:enumeration value="MA"></xsd:enumeration>
+      <xsd:enumeration value="HO"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="LevelCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="C"></xsd:enumeration>
+      <xsd:enumeration value="F"></xsd:enumeration>
+      <xsd:enumeration value="I"></xsd:enumeration>
+      <xsd:enumeration value="L"></xsd:enumeration>
+      <xsd:enumeration value="M"></xsd:enumeration>
+      <xsd:enumeration value="N"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="NameSuffixCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1"></xsd:enumeration>
+      <xsd:enumeration value="2"></xsd:enumeration>
+      <xsd:enumeration value="3"></xsd:enumeration>
+      <xsd:enumeration value="4"></xsd:enumeration>
+      <xsd:enumeration value="5"></xsd:enumeration>
+      <xsd:enumeration value="6"></xsd:enumeration>
+      <xsd:enumeration value="7"></xsd:enumeration>
+      <xsd:enumeration value="8"></xsd:enumeration>
+      <xsd:enumeration value="9"></xsd:enumeration>
+      <xsd:enumeration value="J"></xsd:enumeration>
+      <xsd:enumeration value="S"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="PartyAddress">
+    <xsd:sequence>
+      <xsd:element name="Address1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="0"></xsd:minLength>
+            <xsd:maxLength value="25"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Address2">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="0"></xsd:minLength>
+            <xsd:maxLength value="25"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="CityStateZip">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="0"></xsd:minLength>
+            <xsd:maxLength value="30"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="CountryCode">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="0"></xsd:minLength>
+            <xsd:maxLength value="2"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="PartyName">
+    <xsd:sequence>
+      <xsd:element name="Name" minOccurs="1" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"></xsd:minLength>
+            <xsd:maxLength value="30"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="LastName" minOccurs="0" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="0"></xsd:minLength>
+            <xsd:maxLength value="30"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FirstName" minOccurs="0" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="0"></xsd:minLength>
+            <xsd:maxLength value="30"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="MiddleName" minOccurs="0" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="0"></xsd:minLength>
+            <xsd:maxLength value="30"></xsd:maxLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Suffix" type="tns:NameSuffixCode" minOccurs="0" maxOccurs="1"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="PartyPrivacyCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="FV"></xsd:enumeration>
+      <xsd:enumeration value="NP"></xsd:enumeration>
+      <xsd:enumeration value="Y"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="ProsecutorActionCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="C"></xsd:enumeration>
+      <xsd:enumeration value="F"></xsd:enumeration>
+      <xsd:enumeration value="J"></xsd:enumeration>
+      <xsd:enumeration value="L"></xsd:enumeration>
+      <xsd:enumeration value="N"></xsd:enumeration>
+      <xsd:enumeration value="O"></xsd:enumeration>
+      <xsd:enumeration value="P"></xsd:enumeration>
+      <xsd:enumeration value="Q"></xsd:enumeration>
+      <xsd:enumeration value="R"></xsd:enumeration>
+      <xsd:enumeration value="S"></xsd:enumeration>
+      <xsd:enumeration value="Z"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="RaceCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="A"></xsd:enumeration>
+      <xsd:enumeration value="B"></xsd:enumeration>
+      <xsd:enumeration value="H"></xsd:enumeration>
+      <xsd:enumeration value="I"></xsd:enumeration>
+      <xsd:enumeration value="N"></xsd:enumeration>
+      <xsd:enumeration value="U"></xsd:enumeration>
+      <xsd:enumeration value="W"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="ReopenReasonCode">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="C"></xsd:enumeration>
+			<xsd:enumeration value="E"></xsd:enumeration>
+			<xsd:enumeration value="M"></xsd:enumeration>
+			<xsd:enumeration value="O"></xsd:enumeration>
+			<xsd:enumeration value="P"></xsd:enumeration>
+			<xsd:enumeration value="V"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+  <xsd:simpleType name="ResultStatusCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="OK"></xsd:enumeration>
+      <xsd:enumeration value="UCN_REQUIRED"></xsd:enumeration>
+      <xsd:enumeration value="ERROR"></xsd:enumeration>
+      <xsd:enumeration value="WARNING"></xsd:enumeration>
+	  <xsd:enumeration value="NOTIMPLEMENTED"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="SentenceCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1"></xsd:enumeration>
+      <xsd:enumeration value="2"></xsd:enumeration>
+      <xsd:enumeration value="3"></xsd:enumeration>
+      <xsd:enumeration value="4"></xsd:enumeration>
+      <xsd:enumeration value="5"></xsd:enumeration>
+      <xsd:enumeration value="6"></xsd:enumeration>
+      <xsd:enumeration value="7"></xsd:enumeration>
+      <xsd:enumeration value="21"></xsd:enumeration>
+      <xsd:enumeration value="22"></xsd:enumeration>
+      <xsd:enumeration value="23"></xsd:enumeration>
+      <xsd:enumeration value="24"></xsd:enumeration>
+      <xsd:enumeration value="25"></xsd:enumeration>
+      <xsd:enumeration value="26"></xsd:enumeration>
+      <xsd:enumeration value="27"></xsd:enumeration>
+      <xsd:enumeration value="28"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="SentenceStatusCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1"></xsd:enumeration>
+      <xsd:enumeration value="2"></xsd:enumeration>
+      <xsd:enumeration value="3"></xsd:enumeration>
+      <xsd:enumeration value="4"></xsd:enumeration>
+      <xsd:enumeration value="8"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="SRSCategoryCode">
+		<xsd:restriction base="xsd:string">
+      <xsd:enumeration value="0"></xsd:enumeration>
+      <xsd:enumeration value="1"></xsd:enumeration>
+      <xsd:enumeration value="2"></xsd:enumeration>
+      <xsd:enumeration value="3"></xsd:enumeration>
+      <xsd:enumeration value="4"></xsd:enumeration>
+      <xsd:enumeration value="5"></xsd:enumeration>
+      <xsd:enumeration value="6"></xsd:enumeration>
+      <xsd:enumeration value="7"></xsd:enumeration>
+      <xsd:enumeration value="8"></xsd:enumeration>
+      <xsd:enumeration value="9"></xsd:enumeration>
+      <xsd:enumeration value="10"></xsd:enumeration>
+      <xsd:enumeration value="11"></xsd:enumeration>
+      <xsd:enumeration value="12"></xsd:enumeration>
+      <xsd:enumeration value="13"></xsd:enumeration>
+      <xsd:enumeration value="14"></xsd:enumeration>
+      <xsd:enumeration value="17"></xsd:enumeration>
+      <xsd:enumeration value="20"></xsd:enumeration>
+      <xsd:enumeration value="21"></xsd:enumeration>
+      <xsd:enumeration value="28"></xsd:enumeration>
+      <xsd:enumeration value="29"></xsd:enumeration>
+      <xsd:enumeration value="30"></xsd:enumeration>
+      <xsd:enumeration value="31"></xsd:enumeration>
+      <xsd:enumeration value="32"></xsd:enumeration>
+      <xsd:enumeration value="33"></xsd:enumeration>
+      <xsd:enumeration value="34"></xsd:enumeration>
+      <xsd:enumeration value="35"></xsd:enumeration>
+      <xsd:enumeration value="36"></xsd:enumeration>
+      <xsd:enumeration value="37"></xsd:enumeration>
+      <xsd:enumeration value="38"></xsd:enumeration>
+      <xsd:enumeration value="39"></xsd:enumeration>
+      <xsd:enumeration value="46"></xsd:enumeration>
+      <xsd:enumeration value="47"></xsd:enumeration>
+      <xsd:enumeration value="48"></xsd:enumeration>
+      <xsd:enumeration value="49"></xsd:enumeration>
+      <xsd:enumeration value="50"></xsd:enumeration>
+      <xsd:enumeration value="51"></xsd:enumeration>
+      <xsd:enumeration value="52"></xsd:enumeration>
+      <xsd:enumeration value="53"></xsd:enumeration>
+      <xsd:enumeration value="54"></xsd:enumeration>
+      <xsd:enumeration value="55"></xsd:enumeration>
+      <xsd:enumeration value="56"></xsd:enumeration>
+      <xsd:enumeration value="60"></xsd:enumeration>
+      <xsd:enumeration value="61"></xsd:enumeration>
+      <xsd:enumeration value="62"></xsd:enumeration>
+      <xsd:enumeration value="63"></xsd:enumeration>
+      <xsd:enumeration value="64"></xsd:enumeration>
+      <xsd:enumeration value="65"></xsd:enumeration>
+      <xsd:enumeration value="66"></xsd:enumeration>
+      <xsd:enumeration value="67"></xsd:enumeration>
+      <xsd:enumeration value="68"></xsd:enumeration>
+      <xsd:enumeration value="69"></xsd:enumeration>
+      <xsd:enumeration value="70"></xsd:enumeration>
+      <xsd:enumeration value="71"></xsd:enumeration>
+      <xsd:enumeration value="75"></xsd:enumeration>
+      <xsd:enumeration value="76"></xsd:enumeration>
+      <xsd:enumeration value="77"></xsd:enumeration>
+      <xsd:enumeration value="78"></xsd:enumeration>
+      <xsd:enumeration value="79"></xsd:enumeration>
+      <xsd:enumeration value="80"></xsd:enumeration>
+      <xsd:enumeration value="81"></xsd:enumeration>
+      <xsd:enumeration value="82"></xsd:enumeration>
+      <xsd:enumeration value="83"></xsd:enumeration>
+      <xsd:enumeration value="84"></xsd:enumeration>
+      <xsd:enumeration value="85"></xsd:enumeration>
+      <xsd:enumeration value="86"></xsd:enumeration>
+      <xsd:enumeration value="87"></xsd:enumeration>
+      <xsd:enumeration value="88"></xsd:enumeration>
+      <xsd:enumeration value="90"></xsd:enumeration>
+      <xsd:enumeration value="91"></xsd:enumeration>
+      <xsd:enumeration value="92"></xsd:enumeration>
+      <xsd:enumeration value="93"></xsd:enumeration>
+      <xsd:enumeration value="94"></xsd:enumeration>
+      <xsd:enumeration value="95"></xsd:enumeration>
+      <xsd:enumeration value="100"></xsd:enumeration>
+      <xsd:enumeration value="101"></xsd:enumeration>
+      <xsd:enumeration value="102"></xsd:enumeration>
+      <xsd:enumeration value="103"></xsd:enumeration>
+      <xsd:enumeration value="104"></xsd:enumeration>
+  </xsd:restriction>
+	</xsd:simpleType>
+
+  <xsd:simpleType name="SRSDispositionCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1"></xsd:enumeration>
+      <xsd:enumeration value="2"></xsd:enumeration>
+      <xsd:enumeration value="3"></xsd:enumeration>
+      <xsd:enumeration value="4"></xsd:enumeration>
+      <xsd:enumeration value="5"></xsd:enumeration>
+      <xsd:enumeration value="6"></xsd:enumeration>
+      <xsd:enumeration value="7"></xsd:enumeration>
+      <xsd:enumeration value="8"></xsd:enumeration>
+      <xsd:enumeration value="11"></xsd:enumeration>
+      <xsd:enumeration value="12"></xsd:enumeration>
+      <xsd:enumeration value="13"></xsd:enumeration>
+      <xsd:enumeration value="14"></xsd:enumeration>
+      <xsd:enumeration value="15"></xsd:enumeration>
+      <xsd:enumeration value="16"></xsd:enumeration>
+      <xsd:enumeration value="20"></xsd:enumeration>
+      <xsd:enumeration value="21"></xsd:enumeration>
+      <xsd:enumeration value="22"></xsd:enumeration>
+      <xsd:enumeration value="25"></xsd:enumeration>
+      <xsd:enumeration value="26"></xsd:enumeration>
+      <xsd:enumeration value="27"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="SRSSpecialReportCategoryCode">
+		<xsd:restriction base="xsd:string">
+      <xsd:enumeration value="30"></xsd:enumeration>
+      <xsd:enumeration value="31"></xsd:enumeration>
+      <xsd:enumeration value="32"></xsd:enumeration>
+      <xsd:enumeration value="33"></xsd:enumeration>
+      <xsd:enumeration value="34"></xsd:enumeration>
+      <xsd:enumeration value="39"></xsd:enumeration>
+      <xsd:enumeration value="50"></xsd:enumeration>
+      <xsd:enumeration value="51"></xsd:enumeration>
+      <xsd:enumeration value="52"></xsd:enumeration>
+      <xsd:enumeration value="53"></xsd:enumeration>
+      <xsd:enumeration value="54"></xsd:enumeration>
+      <xsd:enumeration value="55"></xsd:enumeration>
+      <xsd:enumeration value="56"></xsd:enumeration>
+      <xsd:enumeration value="57"></xsd:enumeration>
+      <xsd:enumeration value="58"></xsd:enumeration>
+      <xsd:enumeration value="59"></xsd:enumeration>
+      <xsd:enumeration value="60"></xsd:enumeration>
+      <xsd:enumeration value="61"></xsd:enumeration>
+      <xsd:enumeration value="62"></xsd:enumeration>
+      <xsd:enumeration value="63"></xsd:enumeration>
+      <xsd:enumeration value="64"></xsd:enumeration>
+      <xsd:enumeration value="65"></xsd:enumeration>
+      <xsd:enumeration value="66"></xsd:enumeration>
+      <xsd:enumeration value="67"></xsd:enumeration>
+      <xsd:enumeration value="68"></xsd:enumeration>      
+    </xsd:restriction>
+	</xsd:simpleType>
+
+  <xsd:complexType name="StatuteCode">
+    <xsd:sequence>
+      <xsd:element name="StatuteNumber" minOccurs="1" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="14"></xsd:maxLength>
+            <xsd:minLength value="0"></xsd:minLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="StatuteDescription" minOccurs="0" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="60"></xsd:maxLength>
+            <xsd:minLength value="0"></xsd:minLength>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="TrafficDispositionCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1"></xsd:enumeration>
+      <xsd:enumeration value="2"></xsd:enumeration>
+      <xsd:enumeration value="3"></xsd:enumeration>
+      <xsd:enumeration value="4"></xsd:enumeration>
+      <xsd:enumeration value="6"></xsd:enumeration>
+      <xsd:enumeration value="7"></xsd:enumeration>
+      <xsd:enumeration value="8"></xsd:enumeration>
+      <xsd:enumeration value="9"></xsd:enumeration>
+      <xsd:enumeration value="A"></xsd:enumeration>
+      <xsd:enumeration value="AJN"></xsd:enumeration>
+      <xsd:enumeration value="AJT"></xsd:enumeration>
+      <xsd:enumeration value="B"></xsd:enumeration>
+      <xsd:enumeration value="C"></xsd:enumeration>
+      <xsd:enumeration value="CJD"></xsd:enumeration>
+      <xsd:enumeration value="CJT"></xsd:enumeration>
+      <xsd:enumeration value="CPC"></xsd:enumeration>
+      <xsd:enumeration value="CPL"></xsd:enumeration>
+      <xsd:enumeration value="CPN"></xsd:enumeration>
+      <xsd:enumeration value="D"></xsd:enumeration>
+      <xsd:enumeration value="DCH"></xsd:enumeration>
+      <xsd:enumeration value="DCN"></xsd:enumeration>
+      <xsd:enumeration value="DIS"></xsd:enumeration>
+      <xsd:enumeration value="DLP"></xsd:enumeration>
+      <xsd:enumeration value="DSM"></xsd:enumeration>
+      <xsd:enumeration value="DSN"></xsd:enumeration>
+      <xsd:enumeration value="DST"></xsd:enumeration>
+      <xsd:enumeration value="NDN"></xsd:enumeration>
+      <xsd:enumeration value="NPD"></xsd:enumeration>
+      <xsd:enumeration value="NPN"></xsd:enumeration>
+      <xsd:enumeration value="NPR"></xsd:enumeration>
+      <xsd:enumeration value="PCP"></xsd:enumeration>
+      <xsd:enumeration value="STD"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="TrialTypeCode">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="1"></xsd:enumeration>
+			<xsd:enumeration value="2"></xsd:enumeration>
+			<xsd:enumeration value="3"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="UniformCaseNumber">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="20"></xsd:length>
+		</xsd:restriction>
+	</xsd:simpleType>
+  
+	<xsd:element name="CaseMatrixUserRoleElement" type="tns:CaseMatrixUserRole" />  
+	<xsd:simpleType name="CaseMatrixUserRole">
+		<xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1">
+        <xsd:annotation>
+            <xsd:documentation>Judges, JA, Court Personnel, Clerk Personnel</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="2">
+        <xsd:annotation>
+          <xsd:documentation>State Attorney</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="3">
+        <xsd:annotation>
+          <xsd:documentation>Attorney of Record</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="4">
+        <xsd:annotation>
+          <xsd:documentation>Party Access</xsd:documentation>
+       </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="5">
+        <xsd:annotation>
+          <xsd:documentation>Public in Clerks Office and Registered Users</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="6">
+        <xsd:annotation>
+          <xsd:documentation>General Government and Constitutional Officers</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="7">
+        <xsd:annotation>
+          <xsd:documentation>Public Internet</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="8">
+        <xsd:annotation>
+          <xsd:documentation>Law Enforcement</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="9">
+        <xsd:annotation>
+          <xsd:documentation>Attorney General, Dept. of Children and Family</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="10">
+        <xsd:annotation>
+          <xsd:documentation>School Board</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="11">
+        <xsd:annotation>
+          <xsd:documentation>Commercial Purchasers of Bulk Records</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>		
+    </xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

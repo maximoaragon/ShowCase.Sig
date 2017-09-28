@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowCase.Sig", "ShowCase.Sig\ShowCase.Sig.csproj", "{0D9FF0D6-EB37-454D-83C6-395755392203}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exchange.Contracts", "..\ApplicationServices\DataExchangeServices\Exchange.Contracts\Exchange.Contracts.csproj", "{76209243-CE9D-4E55-9189-28B173B0A866}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exchange.ClientLib", "..\ApplicationServices\DataExchangeServices\Exchange.ClientLib\Exchange.ClientLib.csproj", "{A450845B-1412-453E-8E0A-021D425193AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		QA|Any CPU = QA|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D9FF0D6-EB37-454D-83C6-395755392203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D9FF0D6-EB37-454D-83C6-395755392203}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D9FF0D6-EB37-454D-83C6-395755392203}.QA|Any CPU.ActiveCfg = Release|Any CPU
+		{0D9FF0D6-EB37-454D-83C6-395755392203}.QA|Any CPU.Build.0 = Release|Any CPU
+		{0D9FF0D6-EB37-454D-83C6-395755392203}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D9FF0D6-EB37-454D-83C6-395755392203}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76209243-CE9D-4E55-9189-28B173B0A866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76209243-CE9D-4E55-9189-28B173B0A866}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76209243-CE9D-4E55-9189-28B173B0A866}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{76209243-CE9D-4E55-9189-28B173B0A866}.QA|Any CPU.Build.0 = QA|Any CPU
+		{76209243-CE9D-4E55-9189-28B173B0A866}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76209243-CE9D-4E55-9189-28B173B0A866}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A450845B-1412-453E-8E0A-021D425193AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A450845B-1412-453E-8E0A-021D425193AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A450845B-1412-453E-8E0A-021D425193AE}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{A450845B-1412-453E-8E0A-021D425193AE}.QA|Any CPU.Build.0 = QA|Any CPU
+		{A450845B-1412-453E-8E0A-021D425193AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A450845B-1412-453E-8E0A-021D425193AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2ABDDE71-DD0B-4595-B252-529094DB3941}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://js-ml-tfs:8080/tfs/courtview
+		SccProjectUniqueName0 = ..\\ApplicationServices\\DataExchangeServices\\Exchange.Contracts\\Exchange.Contracts.csproj
+		SccProjectName0 = ../ApplicationServices/DataExchangeServices/Exchange.Contracts
+		SccAuxPath0 = http://js-ml-tfs:8080/tfs/courtview
+		SccLocalPath0 = ..\\ApplicationServices\\DataExchangeServices\\Exchange.Contracts
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = ..\\ApplicationServices\\DataExchangeServices\\Exchange.ClientLib\\Exchange.ClientLib.csproj
+		SccProjectName1 = ../ApplicationServices/DataExchangeServices/Exchange.ClientLib
+		SccAuxPath1 = http://js-ml-tfs:8080/tfs/courtview
+		SccLocalPath1 = ..\\ApplicationServices\\DataExchangeServices\\Exchange.ClientLib
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+EndGlobal
